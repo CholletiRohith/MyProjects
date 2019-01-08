@@ -1,0 +1,103 @@
+﻿@model KalingaCricket.DataAccess.tbl_Player
+
+@{
+    ViewBag.Title = "CreatePlayer";
+}
+
+<h2>CreatePlayer</h2>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tbl_Player</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+
+        <div class="form-group">
+            @Html.Label("Player Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Player_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Player_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Player Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Player_Type, ViewBag.listOfTypes as SelectList)
+                @Html.ValidationMessageFor(model => model.Player_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Player Batting Avg", htmlAttributes: new { @class = "control-label col-md-2 hideBatting" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Player_Batting_Avg, new { htmlAttributes = new { @class = "form-control hideBatting" } })
+                @Html.ValidationMessageFor(model => model.Player_Batting_Avg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Player Bowling Avg", htmlAttributes: new { @class = "control-label col-md-2 hideBowling" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Player_Bowling_Avg, new { htmlAttributes = new { @class = "form-control hideBowling" } })
+                @Html.ValidationMessageFor(model => model.Player_Bowling_Avg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Player Age", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Player_Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Player_Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+   
+       
+           
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    $(document).ready(function () {
+        $(".hideBatting").hide();
+        //$(".hideBowling").hide();
+        $("#Player_Type").change(function () {
+            var type = $('option:selected', this).text();
+            if (type == 'Batsman') {
+
+                $(".hideBatting").show();
+                $(".hideBowling").hide();
+            }
+            else if (type == 'Bowler') {
+                $(".hideBowling").show();
+                $(".hideBatting").hide();
+            }
+            else if (type == 'AllRounder') {
+                $(".hideBowling").show();
+                $(".hideBatting").show();
+            }
+        });
+        
+            
+       
+    });
+</script>

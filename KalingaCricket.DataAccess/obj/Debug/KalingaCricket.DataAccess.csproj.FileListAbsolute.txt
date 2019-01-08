@@ -1,0 +1,14 @@
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.DataAccess.dll.config
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.DataAccess.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.DataAccess.pdb
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\EntityFramework.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.Entities.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.Exceptions.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.Entities.pdb
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\KalingaCricket.Exceptions.pdb
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\EntityFramework.xml
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\obj\Debug\KalingaCricket.DataAccess.csprojResolveAssemblyReference.cache
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\obj\Debug\KalingaCricket.DataAccess.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.DataAccess\obj\Debug\KalingaCricket.DataAccess.pdb

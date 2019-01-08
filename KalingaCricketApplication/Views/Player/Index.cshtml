@@ -1,0 +1,72 @@
+﻿@model IEnumerable<KalingaCricket.DataAccess.tbl_Player>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add Player", "CreatePlayer")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th>
+                @Html.DisplayName("Type of Player")
+            </th>
+            <th>
+                @Html.DisplayName("Batting Average")
+            </th>
+            <th>
+                @Html.DisplayName("Bowling Average")
+            </th>
+            <th>
+                @Html.DisplayName("Age")
+            </th>
+            <th>
+                @Html.DisplayName("Alloted")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player_Batting_Avg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player_Bowling_Avg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Player_Age)
+                </td>
+                <td>
+                  @if (@item.Player_Status == false)
+                  {
+                    @Html.DisplayName("No")
+                  }
+                  else
+                  {
+                    @Html.DisplayName("Yes")
+                  }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@*@{ if(ModelItem=>item.Player_Status)}*@

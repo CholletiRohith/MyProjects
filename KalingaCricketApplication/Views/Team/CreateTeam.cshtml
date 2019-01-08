@@ -1,0 +1,59 @@
+﻿@model IEnumerable<KalingaCricket.DataAccess.tbl_Player>
+
+@{
+    ViewBag.Title = "CreateTeam";
+}
+
+<h2>CreateTeam</h2>
+@using (Html.BeginForm())
+{
+<div class="row">
+    <label class="col-md-3">Country </label>
+
+    <input  class="form-control col-md-6" type="text" name="Country" placeholder="Specify Country" />
+</div>
+<br />
+    <br />
+<table class="table">
+   
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            <input type="checkbox" name="playerList" value="@item.Player_Id" />
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Player_Name)
+        </td>
+        <td>
+            @{
+                if (item.Player_Type == 1)
+                {
+                    @Html.DisplayName("Bowler")
+                }
+                else if (item.Player_Type == 2)
+                {
+                    @Html.DisplayName("Batsman")
+                }
+                else
+                {
+                    @Html.DisplayName("Allrounder")
+                }
+            }
+
+        </td>
+       
+    </tr>
+                }
+
+</table>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Create" class="btn btn-success" />
+    </div>
+</div>
+    
+                }

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KalingaCricketDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Player_Team">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Player_Id" Type="Int32" />
+    <Property Name="Team_Id" Type="Int32" />
+    <NavigationProperty Name="tbl_Player" Relationship="Self.FK_Player_Team_tbl_Player" FromRole="Player_Team" ToRole="tbl_Player" />
+    <NavigationProperty Name="tbl_Team" Relationship="Self.FK_Player_Team_tbl_Team" FromRole="Player_Team" ToRole="tbl_Team" />
+  </EntityType>
+  <EntityType Name="tbl_Player">
+    <Key>
+      <PropertyRef Name="Player_Id" />
+    </Key>
+    <Property Name="Player_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Player_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Player_Type" Type="Int32" Nullable="false" />
+    <Property Name="Player_Batting_Avg" Type="Double" Nullable="false" />
+    <Property Name="Player_Bowling_Avg" Type="Double" Nullable="false" />
+    <Property Name="Player_Age" Type="Int32" Nullable="false" />
+    <Property Name="Player_Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Player_Team" Relationship="Self.FK_Player_Team_tbl_Player" FromRole="tbl_Player" ToRole="Player_Team" />
+  </EntityType>
+  <EntityType Name="tbl_Team">
+    <Key>
+      <PropertyRef Name="Team_Id" />
+    </Key>
+    <Property Name="Team_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Player_Team" Relationship="Self.FK_Player_Team_tbl_Team" FromRole="tbl_Team" ToRole="Player_Team" />
+  </EntityType>
+  <EntityType Name="tbl_Type">
+    <Key>
+      <PropertyRef Name="Type_Id" />
+    </Key>
+    <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Type1" Relationship="Self.FK_tbl_Type_tbl_Type" FromRole="tbl_Type" ToRole="tbl_Type1" />
+    <NavigationProperty Name="tbl_Type2" Relationship="Self.FK_tbl_Type_tbl_Type" FromRole="tbl_Type1" ToRole="tbl_Type" />
+  </EntityType>
+  <Association Name="FK_Player_Team_tbl_Player">
+    <End Role="tbl_Player" Type="Self.tbl_Player" Multiplicity="0..1" />
+    <End Role="Player_Team" Type="Self.Player_Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Player">
+        <PropertyRef Name="Player_Id" />
+      </Principal>
+      <Dependent Role="Player_Team">
+        <PropertyRef Name="Player_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Player_Team_tbl_Team">
+    <End Role="tbl_Team" Type="Self.tbl_Team" Multiplicity="0..1" />
+    <End Role="Player_Team" Type="Self.Player_Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Team">
+        <PropertyRef Name="Team_Id" />
+      </Principal>
+      <Dependent Role="Player_Team">
+        <PropertyRef Name="Team_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Type_tbl_Type">
+    <End Role="tbl_Type" Type="Self.tbl_Type" Multiplicity="1" />
+    <End Role="tbl_Type1" Type="Self.tbl_Type" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Type">
+        <PropertyRef Name="Type_Id" />
+      </Principal>
+      <Dependent Role="tbl_Type1">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KalingaCricketDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Player_Team" EntityType="Self.Player_Team" />
+    <EntitySet Name="tbl_Player" EntityType="Self.tbl_Player" />
+    <EntitySet Name="tbl_Team" EntityType="Self.tbl_Team" />
+    <EntitySet Name="tbl_Type" EntityType="Self.tbl_Type" />
+    <AssociationSet Name="FK_Player_Team_tbl_Player" Association="Self.FK_Player_Team_tbl_Player">
+      <End Role="tbl_Player" EntitySet="tbl_Player" />
+      <End Role="Player_Team" EntitySet="Player_Team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Player_Team_tbl_Team" Association="Self.FK_Player_Team_tbl_Team">
+      <End Role="tbl_Team" EntitySet="tbl_Team" />
+      <End Role="Player_Team" EntitySet="Player_Team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Type_tbl_Type" Association="Self.FK_tbl_Type_tbl_Type">
+      <End Role="tbl_Type" EntitySet="tbl_Type" />
+      <End Role="tbl_Type1" EntitySet="tbl_Type" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

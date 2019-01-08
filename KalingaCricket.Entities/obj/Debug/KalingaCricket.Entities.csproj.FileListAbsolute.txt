@@ -1,0 +1,4 @@
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Entities\bin\Debug\KalingaCricket.Entities.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Entities\bin\Debug\KalingaCricket.Entities.pdb
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Entities\obj\Debug\KalingaCricket.Entities.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Entities\obj\Debug\KalingaCricket.Entities.pdb

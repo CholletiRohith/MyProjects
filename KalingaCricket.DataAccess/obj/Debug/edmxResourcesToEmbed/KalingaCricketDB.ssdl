@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KalingaCricketDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Player_Team">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Player_Id" Type="int" />
+    <Property Name="Team_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Player">
+    <Key>
+      <PropertyRef Name="Player_Id" />
+    </Key>
+    <Property Name="Player_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Player_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Player_Type" Type="int" Nullable="false" />
+    <Property Name="Player_Batting_Avg" Type="float" Nullable="false" />
+    <Property Name="Player_Bowling_Avg" Type="float" Nullable="false" />
+    <Property Name="Player_Age" Type="int" Nullable="false" />
+    <Property Name="Player_Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Team">
+    <Key>
+      <PropertyRef Name="Team_Id" />
+    </Key>
+    <Property Name="Team_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Team_Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Type">
+    <Key>
+      <PropertyRef Name="Type_Id" />
+    </Key>
+    <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Player_Team_tbl_Player">
+    <End Role="tbl_Player" Type="Self.tbl_Player" Multiplicity="0..1" />
+    <End Role="Player_Team" Type="Self.Player_Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Player">
+        <PropertyRef Name="Player_Id" />
+      </Principal>
+      <Dependent Role="Player_Team">
+        <PropertyRef Name="Player_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Player_Team_tbl_Team">
+    <End Role="tbl_Team" Type="Self.tbl_Team" Multiplicity="0..1" />
+    <End Role="Player_Team" Type="Self.Player_Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Team">
+        <PropertyRef Name="Team_Id" />
+      </Principal>
+      <Dependent Role="Player_Team">
+        <PropertyRef Name="Team_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Type_tbl_Type">
+    <End Role="tbl_Type" Type="Self.tbl_Type" Multiplicity="1" />
+    <End Role="tbl_Type1" Type="Self.tbl_Type" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Type">
+        <PropertyRef Name="Type_Id" />
+      </Principal>
+      <Dependent Role="tbl_Type1">
+        <PropertyRef Name="Type_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KalingaCricketDBModelStoreContainer">
+    <EntitySet Name="Player_Team" EntityType="Self.Player_Team" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Player" EntityType="Self.tbl_Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Team" EntityType="Self.tbl_Team" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Type" EntityType="Self.tbl_Type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Player_Team_tbl_Player" Association="Self.FK_Player_Team_tbl_Player">
+      <End Role="tbl_Player" EntitySet="tbl_Player" />
+      <End Role="Player_Team" EntitySet="Player_Team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Player_Team_tbl_Team" Association="Self.FK_Player_Team_tbl_Team">
+      <End Role="tbl_Team" EntitySet="tbl_Team" />
+      <End Role="Player_Team" EntitySet="Player_Team" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Type_tbl_Type" Association="Self.FK_tbl_Type_tbl_Type">
+      <End Role="tbl_Type" EntitySet="tbl_Type" />
+      <End Role="tbl_Type1" EntitySet="tbl_Type" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

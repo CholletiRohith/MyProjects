@@ -1,0 +1,4 @@
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Exceptions\bin\Debug\KalingaCricket.Exceptions.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Exceptions\bin\Debug\KalingaCricket.Exceptions.pdb
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Exceptions\obj\Debug\KalingaCricket.Exceptions.dll
+D:\Assignments\KalingaCricketApplication\KalingaCricket.Exceptions\obj\Debug\KalingaCricket.Exceptions.pdb
